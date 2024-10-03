@@ -1,0 +1,49 @@
+{
+  "name": "mikumikumixed",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@9.12.0",
+  "scripts": {
+    "build": "tsc -b && vite build",
+    "dev": "vite",
+    "lint": "eslint --flag unstable_ts_config .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@react-three/drei": "^9.114.0",
+    "@react-three/fiber": "^8.17.9",
+    "@react-three/xr": "^6.2.12",
+    "forgetti": "^0.8.5",
+    "foxact": "^0.2.38",
+    "leva": "^0.9.35",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "three": "^0.169.0"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^3.7.3",
+    "@eslint-react/eslint-plugin": "^1.14.2",
+    "@importantimport/eslint-config": "1.0.0-alpha.2",
+    "@importantimport/tsconfig": "^0.1.1",
+    "@types/eslint": "^9.6.1",
+    "@types/node": "^22.7.4",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@types/three": "^0.169.0",
+    "@vitejs/plugin-react-swc": "^3.7.1",
+    "eslint": "^9.11.1",
+    "eslint-plugin-react-compiler": "0.0.0-experimental-42acc6a-20241001",
+    "eslint-plugin-react-hooks": "5.1.0-rc-459fd418-20241001",
+    "eslint-plugin-react-refresh": "^0.4.12",
+    "jiti": "^2.1.0",
+    "typescript": "^5.5.3",
+    "vite": "^5.4.1",
+    "vite-plugin-forgetti": "^0.8.5"
+  },
+  "pnpm": {
+    "_comment": "Temporary fix for leva control color selection. See: https://github.com/pmndrs/leva/issues/508#issuecomment-2228569482",
+    "overrides": {
+      "leva>@radix-ui/react-portal": "1.0.2"
+    }
+  }
+}
