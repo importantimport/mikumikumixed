@@ -10,7 +10,7 @@ Visit https://ii.kwaa.dev/mikumikumixed/ and click play.
 
 MikuMikuMixed itself does not store any model/movement/music files, all of which are taken from third parties. If you want to use custom assets, you'll need to deal with file storage and CORS issues on your own.
 
-For example, miku_v2 for three.js is stored here: [/examples/models/mmd/miku/miku_v2.pmd](https://github.com/mrdoob/three.js/tree/dev/examples/models/mmd/miku/miku_v2.pmd)
+For example, miku_v2 model for three.js is stored here: [/examples/models/mmd/miku/miku_v2.pmd](https://github.com/mrdoob/three.js/tree/dev/examples/models/mmd/miku/miku_v2.pmd)
 
 Then you can get it from jsdelivr using the following url: https://cdn.jsdelivr.net/gh/mrdoob/three.js/examples/models/mmd/miku/miku_v2.pmd
 
