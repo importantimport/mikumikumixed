@@ -4,6 +4,7 @@ import forgetti from 'vite-plugin-forgetti'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/mikumikumixed/',
   plugins: [
     react(),
     forgetti({
