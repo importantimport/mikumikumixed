@@ -14,7 +14,7 @@ export default defineConfig({
       preset: 'react',
     }),
   ],
-  // resolve: {
-  //   dedupe: ['@react-three/fiber', 'three'],
-  // },
+  resolve: {
+    dedupe: ['three'],
+  },
 })
