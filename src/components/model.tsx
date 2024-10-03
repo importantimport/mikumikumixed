@@ -25,9 +25,10 @@ export const Model = () => {
     audioPath: `${examples}models/mmd/audios/wavefile_short.mp3`,
     modelPath: `${pmx}miku/Tda式初音ミク・アペンド_Ver1.10.pmx`,
     modelScale: {
-      max: 1,
+      max: 0.2,
       min: 0.01,
-      value: 0.1,
+      step: 0.01,
+      value: 0.08,
     },
 
   })

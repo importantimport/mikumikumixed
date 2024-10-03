@@ -25,8 +25,8 @@ export const Stage = ({ children }: React.PropsWithChildren) => {
         <Environment
           background={background}
           backgroundBlurriness={backgroundBlurriness}
-          ground={ground}
           files="https://cdn.jsdelivr.net/gh/pmndrs/drei-assets/hdri/kiara_1_dawn_1k.hdr"
+          ground={ground}
         // preset={preset as 'dawn'}
         />
       </IfInSessionMode>
