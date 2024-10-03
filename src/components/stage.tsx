@@ -7,7 +7,7 @@ export const Stage = ({ children }: React.PropsWithChildren) => {
     background,
     backgroundBlurriness,
     ground,
-    preset,
+    // preset,
   } = useControls('Stage', {
     background: true,
     backgroundBlurriness: {
@@ -16,7 +16,7 @@ export const Stage = ({ children }: React.PropsWithChildren) => {
       value: 0.5,
     },
     ground: false,
-    preset: 'dawn',
+    // preset: 'dawn',
   })
 
   return (
@@ -26,7 +26,8 @@ export const Stage = ({ children }: React.PropsWithChildren) => {
           background={background}
           backgroundBlurriness={backgroundBlurriness}
           ground={ground}
-          preset={preset as 'dawn'}
+          files="https://cdn.jsdelivr.net/gh/pmndrs/drei-assets/hdri/kiara_1_dawn_1k.hdr"
+        // preset={preset as 'dawn'}
         />
       </IfInSessionMode>
       <SoftShadows />
