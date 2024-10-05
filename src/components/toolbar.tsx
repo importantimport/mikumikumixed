@@ -4,13 +4,13 @@ import { BoxIcon, GithubIcon, PlayIcon, ScanIcon } from '@react-three/uikit-luci
 import { IfInSessionMode, useXRStore } from '@react-three/xr'
 import { useControls } from 'leva'
 
-export const Appbar = () => {
+export const Toolbar = () => {
   const store = useXRStore()
-  const { showAppbar } = useControls('Debug', {
-    showAppbar: true,
+  const { showToolbar } = useControls('Debug', {
+    showToolbar: true,
   })
 
-  return showAppbar && (
+  return showToolbar && (
     <IfInSessionMode deny={['immersive-ar', 'immersive-vr']}>
       <Fullscreen
         alignItems="flex-end"

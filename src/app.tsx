@@ -3,10 +3,10 @@ import { Canvas } from '@react-three/fiber'
 import { createXRStore, XR, XROrigin } from '@react-three/xr'
 import { Leva } from 'leva'
 
-import { Appbar } from './components/appbar'
 import { Model } from './components/model'
 import { Perf } from './components/perf'
 import { Stage } from './components/stage'
+import { Toolbar } from './components/toolbar'
 
 export const App = () => {
   const store = createXRStore({
@@ -28,7 +28,7 @@ export const App = () => {
             <XROrigin />
           </group>
           <Perf />
-          <Appbar />
+          <Toolbar />
           <Stage>
             <Model />
             <OrbitControls
