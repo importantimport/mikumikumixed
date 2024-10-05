@@ -12,7 +12,7 @@ import { Origin } from './components/xr/origin'
 export const App = () => {
   const store = createXRStore({
     controller: { teleportPointer: true },
-    depthSensing: import.meta.env.PROD,
+    // depthSensing: import.meta.env.PROD, // TODO: make option
     emulate: import.meta.env.DEV ? 'metaQuest3' : false,
     hand: { teleportPointer: true },
   })
