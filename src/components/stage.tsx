@@ -47,7 +47,7 @@ export const Stage = ({ children }: React.PropsWithChildren) => {
         />
       </IfInSessionMode>
       <SoftShadows />
-      <directionalLight castShadow position={[1, 8, 1]} />
+      <directionalLight castShadow position={[0, 5, 1]} />
       <ambientLight />
       {children}
     </>
