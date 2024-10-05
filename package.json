@@ -12,6 +12,9 @@
   "dependencies": {
     "@react-three/drei": "^9.114.0",
     "@react-three/fiber": "^8.17.9",
+    "@react-three/uikit": "^0.6.2",
+    "@react-three/uikit-apfel": "^0.6.2",
+    "@react-three/uikit-lucide": "^0.6.2",
     "@react-three/xr": "^6.2.12",
     "forgetti": "^0.8.5",
     "foxact": "^0.2.38",
