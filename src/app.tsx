@@ -4,6 +4,7 @@ import { createXRStore, XR, XROrigin } from '@react-three/xr'
 
 import { Appbar } from './components/appbar'
 import { Model } from './components/model'
+import { Perf } from './components/perf'
 import { Stage } from './components/stage'
 
 export const App = () => {
@@ -23,6 +24,7 @@ export const App = () => {
         <group position={[0, 0, 2]}>
           <XROrigin />
         </group>
+        <Perf />
         <Appbar />
         <Stage>
           <Model />
