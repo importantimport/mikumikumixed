@@ -2,11 +2,15 @@ import { Fullscreen, Text } from '@react-three/uikit'
 import { Button, Card } from '@react-three/uikit-apfel'
 import { BoxIcon, GithubIcon, PlayIcon, ScanIcon } from '@react-three/uikit-lucide'
 import { IfInSessionMode, useXRStore } from '@react-three/xr'
+import { useControls } from 'leva'
 
 export const Appbar = () => {
   const store = useXRStore()
+  const { showAppbar } = useControls('Debug', {
+    showAppbar: true,
+  })
 
-  return (
+  return showAppbar && (
     <IfInSessionMode deny={['immersive-ar', 'immersive-vr']}>
       <Fullscreen
         alignItems="flex-end"
