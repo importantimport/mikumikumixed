@@ -1,6 +1,7 @@
 import { OrbitControls } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import { createXRStore, XR, XROrigin } from '@react-three/xr'
+import { Leva } from 'leva'
 
 import { Appbar } from './components/appbar'
 import { Model } from './components/model'
@@ -19,23 +20,26 @@ export const App = () => {
   })
 
   return (
-    <Canvas camera={{ position: [0, 0, 2] }} shadows style={{ flexGrow: 1, width: '100%' }}>
-      <XR store={store}>
-        <group position={[0, 0, 2]}>
-          <XROrigin />
-        </group>
-        <Perf />
-        <Appbar />
-        <Stage>
-          <Model />
-          <OrbitControls
-            makeDefault
-            maxPolarAngle={Math.PI / 1.9}
-            minPolarAngle={0}
-            target={[0, 1, 0]}
-          />
-        </Stage>
-      </XR>
-    </Canvas>
+    <>
+      <Leva />
+      <Canvas camera={{ position: [0, 0, 2] }} shadows style={{ flexGrow: 1, width: '100%' }}>
+        <XR store={store}>
+          <group position={[0, 0, 2]}>
+            <XROrigin />
+          </group>
+          <Perf />
+          <Appbar />
+          <Stage>
+            <Model />
+            <OrbitControls
+              makeDefault
+              maxPolarAngle={Math.PI / 1.9}
+              minPolarAngle={0}
+              target={[0, 1, 0]}
+            />
+          </Stage>
+        </XR>
+      </Canvas>
+    </>
   )
 }
