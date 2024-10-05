@@ -47,7 +47,8 @@
   "pnpm": {
     "_comment": "Temporary fix for leva control color selection. See: https://github.com/pmndrs/leva/issues/508#issuecomment-2228569482",
     "overrides": {
-      "leva>@radix-ui/react-portal": "1.0.2"
+      "leva>@radix-ui/react-portal": "1.0.2",
+      "stats-gl>@types/three": "-"
     }
   }
 }
