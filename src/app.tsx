@@ -1,12 +1,13 @@
 import { OrbitControls } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
-import { createXRStore, IfInSessionMode, XR, XROrigin } from '@react-three/xr'
+import { createXRStore, IfInSessionMode, XR } from '@react-three/xr'
 import { Leva } from 'leva'
 
 import { Model } from './components/model'
 import { Perf } from './components/perf'
 import { Stage } from './components/stage'
 import { Toolbar } from './components/toolbar'
+import { Origin } from './components/xr/origin'
 
 export const App = () => {
   const store = createXRStore({
@@ -25,9 +26,7 @@ export const App = () => {
       <Leva />
       <Canvas camera={{ position: [0, 0, 2] }} shadows style={{ flexGrow: 1, width: '100%' }}>
         <XR store={store}>
-          <group position={[0, 0, 2]}>
-            <XROrigin />
-          </group>
+          <Origin />
           <IfInSessionMode deny={['immersive-ar', 'immersive-vr']}>
             <Perf />
             <Toolbar />
