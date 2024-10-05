@@ -1,15 +1,16 @@
-import { TeleportTarget, XROrigin } from '@react-three/xr'
-import { useState } from 'react'
-import { Vector3 } from 'three'
+import type { Group } from 'three'
+
+import { useControllerLocomotion, XROrigin } from '@react-three/xr'
+import { useRef } from 'react'
 
 export const Origin = () => {
-  const [position, setPosition] = useState(new Vector3(0, 0, 2))
+  const ref = useRef<Group>(null)
 
-  /** @see {@link https://pmndrs.github.io/xr/docs/tutorials/teleport} */
-  return (
-    <>
-      <XROrigin position={position} />
-      <TeleportTarget onTeleport={setPosition} />
-    </>
-  )
+  useControllerLocomotion(ref)
+
+  /**
+   * TODO: rapier physics
+   * @see {@link https://pmndrs.github.io/xr/docs/getting-started/all-hooks#usecontrollerlocomotion}
+   */
+  return (<XROrigin position={[0, 0, 2]} ref={ref} />)
 }
