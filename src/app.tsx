@@ -12,13 +12,9 @@ import { Origin } from './components/xr/origin'
 export const App = () => {
   const store = createXRStore({
     controller: { teleportPointer: true },
-    depthSensing: true,
+    depthSensing: import.meta.env.PROD,
     emulate: import.meta.env.DEV ? 'metaQuest3' : false,
-    hand: {
-      rayPointer: { cursorModel: { color: 'white' } },
-      teleportPointer: true,
-      touchPointer: { cursorModel: { color: 'white' } },
-    },
+    hand: { teleportPointer: true },
   })
 
   return (
