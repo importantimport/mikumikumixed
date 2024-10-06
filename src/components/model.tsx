@@ -3,11 +3,11 @@ import type { AnimationClip } from 'three'
 import { useFrame } from '@react-three/fiber'
 import { useControls } from 'leva'
 import { useEffect } from 'react'
-import { Audio, Clock } from 'three'
+import { Clock } from 'three'
 import { AmmoPhysics, MMDLoader } from 'three/examples/jsm/Addons.js'
 
 import { usePlaying } from '../contexts/playing'
-import { useAudioBuffer, useAudioListener } from '../hooks/use-audio'
+import { useAudio, useAudioBuffer, useAudioListener } from '../hooks/use-audio'
 import { useMMD, useMMDAnimationHelper } from '../hooks/use-mmd'
 
 export const Model = () => {
@@ -44,20 +44,30 @@ export const Model = () => {
 
   const [helper] = useMMDAnimationHelper()
   const model = useMMD(modelPath)
-  const buffer = useAudioBuffer(audioPath)
+
   const [listener] = useAudioListener()
+  const [audio] = useAudio(listener)
+  const buffer = useAudioBuffer(audioPath)
 
   const clock = new Clock()
 
   useEffect(() => {
     const loader = new MMDLoader()
+
     loader.loadAnimation(animationPath, model, (animation) => {
       model.animations.push(animation as AnimationClip)
       helper.add(model, { animation: model.animations, physics: true })
-      const audio = new Audio(listener).setBuffer(buffer)
-      helper.add(audio, { delayTime: audioDelayTime })
     })
-  }, [animationPath, audioDelayTime, buffer, helper, listener, model])
+
+    audio.setBuffer(buffer)
+    helper.add(audio, { delayTime: audioDelayTime })
+
+    return () => {
+      helper.remove(audio)
+      audio.stop()
+      audio.disconnect()
+    }
+  }, [animationPath, audio, audioDelayTime, buffer, helper, listener, model])
 
   useEffect(() => {
     const mixer = helper?.objects.get(model)?.mixer
@@ -75,7 +85,14 @@ export const Model = () => {
         action.play()
       }
     })
-  }, [helper, model, playing])
+
+    if (!playing) {
+      audio.pause()
+    }
+    else if (!audio.isPlaying && audio.context.currentTime > audioDelayTime) {
+      audio.play()
+    }
+  }, [audio, audioDelayTime, helper, model, playing])
 
   useFrame(() => playing && helper.update(clock.getDelta()))
 
