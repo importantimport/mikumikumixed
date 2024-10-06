@@ -6,10 +6,13 @@ import { useEffect } from 'react'
 import { Audio, Clock } from 'three'
 import { AmmoPhysics, MMDLoader } from 'three/examples/jsm/Addons.js'
 
+import { usePlaying } from '../contexts/playing'
 import { useAudioBuffer, useAudioListener } from '../hooks/use-audio'
 import { useMMD, useMMDAnimationHelper } from '../hooks/use-mmd'
 
 export const Model = () => {
+  const playing = usePlaying()
+
   const examples = 'https://cdn.jsdelivr.net/gh/mrdoob/three.js/examples/'
   const pmx = 'https://cdn.jsdelivr.net/gh/iampingoo/SampleWebMMD-master/pmx/'
 
@@ -56,8 +59,6 @@ export const Model = () => {
     })
   }, [animationPath, audioDelayTime, buffer, helper, listener, model])
 
-  const { play } = useControls({ play: false })
-
   useEffect(() => {
     const mixer = helper?.objects.get(model)?.mixer
 
@@ -66,7 +67,7 @@ export const Model = () => {
 
     model.animations.forEach((animation) => {
       const action = mixer.clipAction(animation)
-      if (!play) {
+      if (!playing) {
         action.timeScale = 0
       }
       else if (!action.isRunning()) {
@@ -74,9 +75,9 @@ export const Model = () => {
         action.play()
       }
     })
-  }, [helper, model, play])
+  }, [helper, model, playing])
 
-  useFrame(() => play && helper.update(clock.getDelta()))
+  useFrame(() => playing && helper.update(clock.getDelta()))
 
   return (<primitive castShadow object={model} scale={modelScale} />)
 }

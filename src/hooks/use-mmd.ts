@@ -4,4 +4,7 @@ import { MMDAnimationHelper, MMDLoader } from 'three/examples/jsm/Addons.js'
 
 export const useMMD = (path: string) => useLoader(MMDLoader, path)
 
-export const useMMDAnimationHelper = () => useState<MMDAnimationHelper>(new MMDAnimationHelper())
+export const useMMDAnimationHelper = () => useState<MMDAnimationHelper>(new MMDAnimationHelper({
+  afterglow: 2.0,
+  resetPhysicsOnLoop: true,
+}))

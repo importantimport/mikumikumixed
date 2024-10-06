@@ -1,10 +1,15 @@
 import { Fullscreen, Text } from '@react-three/uikit'
 import { Button, Card } from '@react-three/uikit-apfel'
-import { BoxIcon, GithubIcon, PlayIcon, ScanIcon } from '@react-three/uikit-lucide'
+import { BoxIcon, GithubIcon, PauseIcon, PlayIcon, ScanIcon } from '@react-three/uikit-lucide'
 import { useXRStore } from '@react-three/xr'
 import { useControls } from 'leva'
 
+import { usePlaying, useTogglePlaying } from '../contexts/playing'
+
 export const Toolbar = () => {
+  const playing = usePlaying()
+  const togglePlaying = useTogglePlaying()
+
   const store = useXRStore()
   const { showToolbar } = useControls('Debug', {
     showToolbar: true,
@@ -50,8 +55,9 @@ export const Toolbar = () => {
           <ScanIcon />
           <Text>Enter AR</Text>
         </Button>
-        <Button disabled variant="icon">
-          <PlayIcon />
+        <Button onClick={togglePlaying} variant="icon">
+          <PlayIcon display={playing ? 'none' : 'flex'} />
+          <PauseIcon display={playing ? 'flex' : 'none'} />
         </Button>
       </Card>
     </Fullscreen>

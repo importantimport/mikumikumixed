@@ -8,6 +8,7 @@ import { Perf } from './components/perf'
 import { Stage } from './components/stage'
 import { Toolbar } from './components/toolbar'
 import { Origin } from './components/xr/origin'
+import { PlayingProvider } from './contexts/playing'
 
 export const App = () => {
   const store = createXRStore({
@@ -18,7 +19,7 @@ export const App = () => {
   })
 
   return (
-    <>
+    <PlayingProvider>
       <Leva />
       <Canvas camera={{ position: [0, 0, 2] }} shadows style={{ flexGrow: 1, width: '100%' }}>
         <XR store={store}>
@@ -38,6 +39,6 @@ export const App = () => {
           </Stage>
         </XR>
       </Canvas>
-    </>
+    </PlayingProvider>
   )
 }
