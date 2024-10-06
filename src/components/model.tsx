@@ -95,5 +95,7 @@ export const Model = () => {
 
   useFrame(() => playing && helper.update(clock.getDelta()))
 
-  return (<primitive castShadow object={model} scale={modelScale} />)
+  return (
+    <primitive castShadow object={model} scale={modelScale} />
+  )
 }

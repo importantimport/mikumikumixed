@@ -2,11 +2,13 @@ import { OrbitControls } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import { createXRStore, IfInSessionMode, XR } from '@react-three/xr'
 import { Leva } from 'leva'
+import { Suspense } from 'react'
 
 import { Model } from './components/model'
 import { Perf } from './components/perf'
 import { Stage } from './components/stage'
 import { Toolbar } from './components/toolbar'
+import { Loading } from './components/uikit/loading'
 import { Origin } from './components/xr/origin'
 import { PlayingProvider } from './contexts/playing'
 
@@ -35,7 +37,9 @@ export const App = () => {
             />
           </IfInSessionMode>
           <Stage>
-            <Model />
+            <Suspense fallback={<Loading />}>
+              <Model />
+            </Suspense>
           </Stage>
         </XR>
       </Canvas>
