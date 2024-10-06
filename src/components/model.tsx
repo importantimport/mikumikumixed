@@ -21,14 +21,12 @@ export const Model = () => {
     audioDelayTime,
     audioPath,
     modelPath,
-    modelPhysics,
     modelScale,
   } = useControls('Assets', {
     animationPath: `${examples}models/mmd/vmds/wavefile_v2.vmd`,
     audioDelayTime: 160 * 1 / 30,
     audioPath: `${examples}models/mmd/audios/wavefile_short.mp3`,
     modelPath: `${pmx}miku/Tda式初音ミク・アペンド_Ver1.10.pmx`,
-    modelPhysics: true,
     modelScale: {
       max: 0.2,
       min: 0.01,
@@ -57,7 +55,7 @@ export const Model = () => {
 
     loader.loadAnimation(animationPath, model, (animation) => {
       model.animations.push(animation as AnimationClip)
-      helper.add(model, { animation: model.animations, physics: modelPhysics })
+      helper.add(model, { animation: model.animations, physics: true })
     })
 
     audio.setBuffer(buffer)
