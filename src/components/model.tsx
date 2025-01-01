@@ -13,7 +13,7 @@ import { useMMD, useMMDAnimationHelper } from '../hooks/use-mmd'
 export const Model = () => {
   const playing = usePlaying()
 
-  const examples = 'https://cdn.jsdelivr.net/gh/mrdoob/three.js/examples/'
+  const examples = 'https://cdn.jsdelivr.net/gh/mrdoob/three.js@r171/examples/'
   const pmx = 'https://cdn.jsdelivr.net/gh/iampingoo/SampleWebMMD-master/pmx/'
 
   const {
